@@ -1,0 +1,1088 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Georgios Nikolaos Karelas</title>
+<meta name="description" content="Georgios Nikolaos Karelas, PhD candidate at Universitat Pompeu Fabra working on discrete probability, random games and probabilistic combinatorics.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Georgios Nikolaos Karelas">
+<meta property="og:description" content="Discrete probability, game theory, random graphs and probabilistic combinatorics. PhD candidate at Universitat Pompeu Fabra.">
+<meta name="theme-color" content="#FBFBF9">
+<!-- Favicon: a circled plus, the mark used for a pure Nash equilibrium in the figure on the About tab -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12' fill='none' stroke='%23146A4E' stroke-width='3'/%3E%3Cpath d='M16 9v14M9 16h14' stroke='%23146A4E' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:wght@400;600&display=swap">
+<script>document.documentElement.classList.replace('no-js', 'js');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Georgios Nikolaos Karelas",
+  "jobTitle": "PhD candidate",
+  "affiliation": { "@type": "CollegeOrUniversity", "name": "Universitat Pompeu Fabra" },
+  "email": "mailto:georgios.karelas@upf.edu",
+  "sameAs": ["https://scholar.google.com/citations?user=VtUY9cQAAAAJ"],
+  "knowsAbout": ["Discrete probability", "Game theory", "Random graphs", "Probabilistic combinatorics"]
+}
+</script>
+<style>
+/* ------------------------------------------------------------------
+   Tokens
+   ------------------------------------------------------------------ */
+:root {
+  --paper:       #FBFBF9;
+  --ink:         #1F2528;
+  --muted:       #5B6469;
+  --faint:       #A6AEB2;
+  --rule:        #DFE3E1;
+  --accent:      #146A4E;   /* card-table green */
+  --accent-soft: #E6F0EB;
+
+  --serif: "STIX Two Text", "STIX Two", "Cambria", Georgia, serif;
+  --sans:  "Source Sans 3", "Source Sans Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:  ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --label-col: 10rem;        /* left column for dates and labels */
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:       #131816;
+    --ink:         #E3E8E5;
+    --muted:       #A1ABA6;
+    --faint:       #56605B;
+    --rule:        #2A3330;
+    --accent:      #5EC29C;
+    --accent-soft: #1B2B25;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Base
+   ------------------------------------------------------------------ */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.125rem;
+  line-height: 1.62;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+  text-rendering: optimizeLegibility;
+}
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.wrap {
+  max-width: 66rem;
+  margin: 0 auto;
+  padding-inline: 1.5rem;
+}
+.sans { font-family: var(--sans); }
+
+/* ------------------------------------------------------------------
+   Masthead and tabs
+   ------------------------------------------------------------------ */
+.masthead { padding: 3.25rem 0 1.5rem; }
+.masthead-inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.portrait {
+  position: relative;
+  flex: none;
+  width: 5.75rem;
+  height: 5.75rem;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--accent-soft);
+  display: grid;
+  place-items: center;
+}
+.portrait span {
+  font-size: 1.75rem;
+  color: var(--accent);
+}
+.portrait img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.012em;
+}
+.role {
+  margin: 0.45rem 0 0;
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  color: var(--muted);
+}
+
+.tabs {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+}
+.tabs ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs ul::-webkit-scrollbar { display: none; }
+.tabs a {
+  display: block;
+  margin-bottom: -1px;
+  padding: 0.85rem 0 0.7rem;
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  color: var(--muted);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+}
+.tabs a:hover { color: var(--ink); }
+.tabs a[aria-current="page"] {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
+/* ------------------------------------------------------------------
+   Panels
+   ------------------------------------------------------------------ */
+main { padding: 2.75rem 0 4.5rem; }
+.panel:focus { outline: none; }
+.js .panel:not(.is-active) { display: none; }
+/* Links like /#teaching open at the top of the page instead of jumping past the name. */
+.js .panel { scroll-margin-top: 200vh; }
+
+/* Panel titles are read by screen readers; the tab already shows them. */
+.panel-title {
+  margin: 0 0 1.5rem;
+  font-size: 2rem;
+  font-weight: 500;
+}
+.js .panel-title {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+.no-js .panel + .panel { margin-top: 4rem; }
+
+.panel h3 {
+  margin: 2.75rem 0 1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+.panel .lead + h3,
+.panel .panel-title + h3 { margin-top: 0; }
+
+.prose { max-width: 38rem; }
+.prose p { margin: 0 0 1rem; }
+.lead {
+  max-width: 38rem;
+  margin: 0 0 2.75rem;
+}
+
+/* Dated lists: news, talks, visits, workshops, CV entries */
+.dated {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 48rem;
+}
+.dated li {
+  display: grid;
+  grid-template-columns: var(--label-col) minmax(0, 1fr);
+  gap: 1.25rem;
+  padding: 0.5rem 0;
+}
+.when {
+  padding-top: 0.2rem;
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--muted);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.where {
+  display: block;
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+/* ------------------------------------------------------------------
+   About
+   ------------------------------------------------------------------ */
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 20rem;
+  gap: 3.5rem;
+  align-items: start;
+}
+.about .prose { margin-bottom: 2.75rem; }
+
+.game { margin: 0; }
+.no-js .game { display: none; }
+.game svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.game figcaption {
+  margin-top: 0.5rem;
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.game figcaption p { margin: 0 0 0.65rem; }
+.game .outcome { color: var(--ink); }
+
+.g-axis  { font-family: var(--sans); font-size: 11px; fill: var(--muted); }
+.g-dot   { fill: var(--faint); }
+.g-tick  { stroke: var(--muted); stroke-width: 1.5; stroke-linecap: round; }
+.g-pne   { fill: none; stroke: var(--accent); stroke-width: 1.5; }
+.g-path  { fill: none; stroke: var(--ink); stroke-opacity: 0.55; stroke-width: 1.75; stroke-linejoin: round; stroke-linecap: round; }
+.g-cycle { fill: none; stroke: var(--accent); stroke-width: 2.75; stroke-linejoin: round; stroke-linecap: round; }
+.g-start { fill: var(--paper); stroke: var(--ink); stroke-width: 1.75; }
+.g-end   { fill: var(--accent); }
+
+/* ------------------------------------------------------------------
+   Research
+   ------------------------------------------------------------------ */
+.paper {
+  max-width: 44rem;
+  margin: 0 0 2rem;
+}
+.paper-title {
+  margin: 0;
+  font-size: 1.1875rem;
+  font-weight: 500;
+  line-height: 1.38;
+}
+.paper-title a {
+  color: var(--ink);
+  text-decoration-color: var(--faint);
+}
+.paper-title a:hover {
+  color: var(--accent);
+  text-decoration-color: currentColor;
+}
+.paper-authors { margin: 0.15rem 0 0; }
+.paper-status {
+  margin: 0.15rem 0 0;
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+.paper-summary { margin: 0.6rem 0 0; }
+.paper-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 1.25rem;
+  margin-top: 0.6rem;
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+}
+.paper-links details[open] { flex-basis: 100%; }
+summary {
+  cursor: pointer;
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  list-style: none;
+}
+summary::-webkit-details-marker { display: none; }
+.bib {
+  position: relative;
+  margin-top: 0.6rem;
+}
+.bib pre {
+  margin: 0;
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+  font: 0.8125rem/1.55 var(--mono);
+  color: var(--ink);
+  background: var(--accent-soft);
+  border-radius: 3px;
+}
+.bib button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+/* ------------------------------------------------------------------
+   Teaching
+   ------------------------------------------------------------------ */
+.courses {
+  width: 100%;
+  max-width: 44rem;
+  border-collapse: collapse;
+}
+.courses th,
+.courses td {
+  padding: 0.6rem 1.25rem 0.6rem 0;
+  text-align: left;
+  vertical-align: baseline;
+  border-bottom: 1px solid var(--rule);
+}
+.courses th:first-child,
+.courses td:first-child { width: 42%; }
+.courses th {
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.courses td + td {
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  color: var(--muted);
+  font-variant-numeric: lining-nums;
+}
+.dept {
+  margin: -0.6rem 0 1rem;
+  color: var(--muted);
+}
+
+/* ------------------------------------------------------------------
+   CV and contact
+   ------------------------------------------------------------------ */
+.cv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  margin: 0 0 2.75rem;
+}
+.cv-actions .sans {
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+.keyval {
+  display: grid;
+  grid-template-columns: var(--label-col) minmax(0, 1fr);
+  gap: 1rem 1.25rem;
+  max-width: 48rem;
+  margin: 0;
+}
+.keyval dt {
+  padding-top: 0.2rem;
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+.keyval dd { margin: 0; }
+.keyval dd p { margin: 0; }
+.note { color: var(--muted); font-size: 1rem; }
+
+/* ------------------------------------------------------------------
+   Buttons
+   ------------------------------------------------------------------ */
+.btn {
+  display: inline-block;
+  padding: 0.55rem 1.05rem;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--paper);
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 3px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover { filter: brightness(1.1); }
+.btn-quiet {
+  color: var(--accent);
+  background: transparent;
+}
+.btn-quiet:hover { background: var(--accent-soft); filter: none; }
+.btn-small {
+  padding: 0.2rem 0.6rem;
+  font-size: 0.8125rem;
+}
+
+/* ------------------------------------------------------------------
+   Footer
+   ------------------------------------------------------------------ */
+footer {
+  padding: 1.5rem 0 2.5rem;
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  color: var(--muted);
+  border-top: 1px solid var(--rule);
+}
+footer p { margin: 0; }
+
+/* ------------------------------------------------------------------
+   Small screens, motion, print
+   ------------------------------------------------------------------ */
+@media (max-width: 860px) {
+  .about { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .game { max-width: 24rem; margin-bottom: 2.75rem; }
+  .about .game { order: 2; }
+}
+@media (max-width: 600px) {
+  .masthead { padding-top: 2.25rem; }
+  .masthead-inner { gap: 1rem; }
+  .portrait { width: 4.25rem; height: 4.25rem; }
+  .portrait span { font-size: 1.35rem; }
+  .tabs ul { flex-wrap: wrap; column-gap: 1.25rem; row-gap: 0; }
+  .tabs a { font-size: 1rem; padding: 0.6rem 0 0.5rem; }
+  .dated li,
+  .keyval { grid-template-columns: minmax(0, 1fr); gap: 0.1rem; }
+  .keyval dd { margin-bottom: 0.9rem; }
+}
+@media print {
+  .tabs, .game, .btn, .cv-actions { display: none !important; }
+  .js .panel { display: block !important; }
+  .js .panel-title { position: static; width: auto; height: auto; margin: 2rem 0 1rem; clip: auto; overflow: visible; }
+  body { font-size: 11pt; }
+  a { color: inherit; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <!-- Add a square photo as images/profile.jpg. Until then the initials show. -->
+    <div class="portrait">
+      <span aria-hidden="true">GK</span>
+      <img src="images/profile.jpg" alt="Georgios Nikolaos Karelas" onerror="this.remove()">
+    </div>
+    <div>
+      <h1>Georgios Nikolaos Karelas</h1>
+      <p class="role">PhD candidate at Universitat Pompeu Fabra, Barcelona</p>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#talks">Talks</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#cv">CV</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- ==============================================================
+       ABOUT
+       ============================================================== -->
+  <section id="about" class="panel is-active" tabindex="-1" aria-labelledby="about-title">
+    <h2 class="panel-title" id="about-title">About</h2>
+
+    <div class="about">
+      <div>
+        <div class="prose">
+          <p>I am a PhD candidate at Universitat Pompeu Fabra in Barcelona, advised by Gábor Lugosi, and a predoctoral researcher at the Barcelona School of Economics, funded by an FPI fellowship from the Spanish Ministry of Science.</p>
+          <p>I work in discrete probability and probabilistic combinatorics, and most of my questions come from game theory. Lately that means random games: when two players follow best-response dynamics in a game whose payoffs are drawn at random, how often do they find a pure Nash equilibrium, and what do the cycles they get trapped in look like?</p>
+          <p>Before Barcelona I studied mathematics at the University of Patras and at KTH and Stockholm University, and completed an M.Sc. in data-driven computing at Patras.</p>
+        </div>
+
+        <h3>News</h3>
+        <ol class="dated">
+          <li>
+            <time class="when" datetime="2026-10">Oct 2026</time>
+            <div>Preprint on arXiv: <a href="https://arxiv.org/abs/2610.29153">Cycle structure of best-response dynamics in random bimatrix games</a>, with Gábor Lugosi and Rui-Ray Zhang.</div>
+          </li>
+          <li>
+            <time class="when" datetime="2026-09">Sep 2026</time>
+            <div>Talks at the BMS-BGSMath Junior Meeting at the Centre de Recerca Matemàtica and at the AI/Statistics Seminar at UPF.</div>
+          </li>
+          <li>
+            <time class="when" datetime="2026-06">Jun 2026</time>
+            <div>ISM summer school on probability and combinatorics at McGill University.</div>
+          </li>
+          <li>
+            <time class="when" datetime="2026-03">Mar 2026</time>
+            <div>Visiting Luc Devroye at McGill University, including the Bellairs workshop on probability and combinatorics in Barbados.</div>
+          </li>
+          <li>
+            <time class="when" datetime="2026-02">Feb 2026</time>
+            <div>Visiting Roberto Imbuzeiro Oliveira at IMPA, Rio de Janeiro.</div>
+          </li>
+          <li>
+            <time class="when" datetime="2025">2025</time>
+            <div>Received the PhD Teaching Prize for 2024–25.</div>
+          </li>
+        </ol>
+      </div>
+
+      <!-- A fresh random game is drawn on every visit (script at the bottom of the page). -->
+      <figure class="game">
+        <svg id="game" viewBox="0 0 300 300" role="img" aria-labelledby="game-outcome"></svg>
+        <figcaption>
+          <p>A random 10 × 10 game with independent uniform payoffs, drawn when you opened this page. In each column, a vertical mark shows the row player's best response; in each row, a horizontal mark shows the column player's. Where the two cross, circled, is a pure Nash equilibrium.</p>
+          <p class="outcome" id="game-outcome" aria-live="polite"></p>
+          <button type="button" class="btn btn-quiet" id="resample" aria-controls="game">Draw another game</button>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ==============================================================
+       RESEARCH
+       ============================================================== -->
+  <section id="research" class="panel" tabindex="-1" aria-labelledby="research-title">
+    <h2 class="panel-title" id="research-title">Research</h2>
+
+    <p class="lead">My interests are discrete probability, game theory, random graphs and probabilistic combinatorics. Papers are also listed on <a href="https://scholar.google.com/citations?user=VtUY9cQAAAAJ&amp;hl=en">Google Scholar</a>.</p>
+
+    <h3>Preprints</h3>
+
+    <article class="paper">
+      <h4 class="paper-title"><a href="https://arxiv.org/abs/2610.29153">Cycle structure of best-response dynamics in random bimatrix games</a></h4>
+      <p class="paper-authors">with Gábor Lugosi and Rui-Ray Zhang</p>
+      <p class="paper-status">2026. Under review.</p>
+      <!-- Short summary. Replace it with the arXiv abstract if you prefer. -->
+      <p class="paper-summary">We study the cycles of the best-response digraph of a bimatrix game with random payoffs: how many there are, how long they get, and how the answer changes with the payoff structure.</p>
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.29153">arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.29153">PDF</a>
+        <details>
+          <summary>BibTeX</summary>
+          <div class="bib">
+<pre id="bib-cycle">@misc{karelas2026cycle,
+  title         = {Cycle structure of best-response dynamics
+                   in random bimatrix games},
+  author        = {Karelas, Georgios Nikolaos and Lugosi, G{\'a}bor
+                   and Zhang, Rui-Ray},
+  year          = {2026},
+  eprint        = {2610.29153},
+  archivePrefix = {arXiv}
+}</pre>
+            <button type="button" class="btn btn-quiet btn-small" data-copy="bib-cycle">Copy</button>
+          </div>
+        </details>
+      </div>
+    </article>
+
+    <!-- Template for a new paper: copy this block above the one you want it to precede.
+    <article class="paper">
+      <h4 class="paper-title"><a href="LINK">Title</a></h4>
+      <p class="paper-authors">with Coauthor One and Coauthor Two</p>
+      <p class="paper-status">Journal, year.</p>
+      <div class="paper-links"><a href="LINK">arXiv</a> <a href="LINK">PDF</a></div>
+    </article>
+    -->
+
+    <h3>Work in progress</h3>
+
+    <article class="paper">
+      <h4 class="paper-title">Counting and finding approximate Nash equilibria in random games</h4>
+      <p class="paper-authors">with Gábor Lugosi, Roberto Imbuzeiro Oliveira and Rui-Ray Zhang</p>
+    </article>
+
+    <article class="paper">
+      <h4 class="paper-title">Component structure of best-response dynamics in random bimatrix games</h4>
+      <p class="paper-authors">with Gábor Lugosi and Rui-Ray Zhang</p>
+    </article>
+
+    <h3>Theses</h3>
+
+    <article class="paper">
+      <h4 class="paper-title">Computing Nash equilibria in random games</h4>
+      <p class="paper-status">M.Res. thesis, Universitat Pompeu Fabra, 2023. Advisor: Gábor Lugosi.</p>
+    </article>
+
+    <article class="paper">
+      <h4 class="paper-title">Gap properties in random intersection graphs</h4>
+      <p class="paper-status">M.Sc. thesis, University of Patras, 2023. Advisor: Sotirios Nikoletseas.</p>
+    </article>
+
+    <article class="paper">
+      <h4 class="paper-title">Interventions for identifying context-specific causal structures</h4>
+      <p class="paper-status">M.Sc. thesis, KTH Royal Institute of Technology and Stockholm University, 2021. Advisor: Liam Solus.</p>
+    </article>
+  </section>
+
+  <!-- ==============================================================
+       TALKS
+       ============================================================== -->
+  <section id="talks" class="panel" tabindex="-1" aria-labelledby="talks-title">
+    <h2 class="panel-title" id="talks-title">Talks</h2>
+
+    <h3>Talks</h3>
+    <!-- To link slides, add: <a href="files/slides-name.pdf">Slides</a> after the venue. -->
+    <ol class="dated">
+      <li>
+        <time class="when" datetime="2026-09-30">30 Sep 2026</time>
+        <div>Navigating Random Games: Convergence and Cycles in Best Response Dynamics
+          <span class="where">AI/Statistics Seminar, Universitat Pompeu Fabra</span></div>
+      </li>
+      <li>
+        <time class="when" datetime="2026-09">2–4 Sep 2026</time>
+        <div>Navigating Random Games: Convergence and Cycles in Best Response Dynamics
+          <span class="where">BMS-BGSMath Junior Meeting, Centre de Recerca Matemàtica</span></div>
+      </li>
+      <li>
+        <time class="when" datetime="2026-05-20">20 May 2026</time>
+        <div>Best response dynamics in random games
+          <span class="where">Student Seminar, Universitat Pompeu Fabra</span></div>
+      </li>
+      <li>
+        <time class="when" datetime="2021-06-01">1 Jun 2021</time>
+        <div>Interventions for identifying context-specific causal structures
+          <span class="where">Seminar for Applied Combinatorics, Algebra, Topology and Statistics, KTH Royal Institute of Technology</span></div>
+      </li>
+    </ol>
+
+    <h3>Research visits</h3>
+    <ol class="dated">
+      <li>
+        <time class="when" datetime="2026-03">4 Mar – 6 Apr 2026</time>
+        <div>McGill University, Montréal
+          <span class="where">Hosted by Luc Devroye</span></div>
+      </li>
+      <li>
+        <time class="when" datetime="2026-02">4 Feb – 4 Mar 2026</time>
+        <div>IMPA, Rio de Janeiro
+          <span class="where">Hosted by Roberto Imbuzeiro Oliveira</span></div>
+      </li>
+      <li>
+        <time class="when" datetime="2025-02">19 Feb – 19 Mar 2025</time>
+        <div>Pontificia Universidad Católica de Chile, Santiago
+          <span class="where">Hosted by Dieter Mitsche</span></div>
+      </li>
+    </ol>
+
+    <h3>Schools and workshops</h3>
+    <ol class="dated">
+      <li>
+        <time class="when" datetime="2026-06">8–12 Jun 2026</time>
+        <div>ISM Probability and Combinatorics Summer School
+          <span class="where">McGill University, Canada</span></div>
+      </li>
+      <li>
+        <time class="when" datetime="2026-03">27 Mar – 3 Apr 2026</time>
+        <div>Probability and Combinatorics: 20th Annual Workshop
+          <span class="where">Bellairs Research Institute of McGill University, Barbados</span></div>
+      </li>
+      <li>
+        <time class="when" datetime="2025-09">24–26 Sep 2025</time>
+        <div>RandNet Workshop on Random Discrete Structures
+          <span class="where">TU Wien, Austria</span></div>
+      </li>
+      <li>
+        <time class="when" datetime="2025-03">24–28 Mar 2025</time>
+        <div>Oxford Probability Workshop: Random Discrete Structures
+          <span class="where">University of Oxford, United Kingdom</span></div>
+      </li>
+      <li>
+        <time class="when" datetime="2025-03">3–5 Mar 2025</time>
+        <div>2nd Workshop “PISA: Probability in South America”
+          <span class="where">Pontificia Universidad Católica de Chile</span></div>
+      </li>
+      <li>
+        <time class="when" datetime="2025-01-30">30 Jan 2025</time>
+        <div>Barcelona Discrete Mathematics Meeting (BDMM 2025)
+          <span class="where">Centre de Recerca Matemàtica, Spain</span></div>
+      </li>
+      <li>
+        <time class="when" datetime="2024-11">21–22 Nov 2024</time>
+        <div>Junior Workshop on Mathematical Game Theory
+          <span class="where">Luiss University, Italy</span></div>
+      </li>
+      <li>
+        <time class="when" datetime="2024-09">9–13 Sep 2024</time>
+        <div>Mathematical Aspects of Learning Theory: 20 Years Later
+          <span class="where">Centre de Recerca Matemàtica, Spain</span></div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ==============================================================
+       TEACHING
+       ============================================================== -->
+  <section id="teaching" class="panel" tabindex="-1" aria-labelledby="teaching-title">
+    <h2 class="panel-title" id="teaching-title">Teaching</h2>
+
+    <p class="lead">I have been a teaching assistant for undergraduate courses at Universitat Pompeu Fabra since 2023, and received the PhD Teaching Prize for 2024–25.</p>
+
+    <!-- Optional block for current students:
+    <h3>This term</h3>
+    <p class="prose">Mathematics I, Fall 2026. Office hours: DAY, TIME, room ROOM, or by appointment.</p>
+    -->
+
+    <h3>Universitat Pompeu Fabra</h3>
+    <p class="dept">Department of Economics and Business</p>
+    <table class="courses">
+      <thead>
+        <tr><th scope="col">Course</th><th scope="col">Terms</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Mathematics I</td><td>Fall 2024, Fall 2025, Fall 2026</td></tr>
+        <tr><td>Mathematics III</td><td>Spring 2023, Spring 2024, Spring 2025, Spring 2026</td></tr>
+        <tr><td>Strategic Management II</td><td>Winter 2023</td></tr>
+      </tbody>
+    </table>
+
+    <h3>University of Patras</h3>
+    <p class="dept">Department of Computer Engineering and Informatics</p>
+    <table class="courses">
+      <thead>
+        <tr><th scope="col">Course</th><th scope="col">Terms</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Database Systems, lab</td><td>Fall 2021</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ==============================================================
+       CV
+       ============================================================== -->
+  <section id="cv" class="panel" tabindex="-1" aria-labelledby="cv-title">
+    <h2 class="panel-title" id="cv-title">CV</h2>
+
+    <!-- To update: replace files/CV_Karelas.pdf and change the date below. -->
+    <div class="cv-actions">
+      <a class="btn" href="files/CV_Karelas.pdf" download>Download CV (PDF)</a>
+      <a class="sans" href="files/CV_Karelas.pdf" target="_blank" rel="noopener">Open in browser</a>
+      <span class="sans">Updated November 2026</span>
+    </div>
+
+    <h3>Employment</h3>
+    <ol class="dated">
+      <li>
+        <span class="when">Oct 2023 – present</span>
+        <div>Predoctoral Researcher, Barcelona School of Economics</div>
+      </li>
+    </ol>
+
+    <h3>Education</h3>
+    <ol class="dated">
+      <li>
+        <span class="when">2023 – 2027 (expected)</span>
+        <div>Ph.D. in Economics, Finance and Management, Universitat Pompeu Fabra
+          <span class="where">Random games and probabilistic combinatorics. Advisor: Gábor Lugosi.</span></div>
+      </li>
+      <li>
+        <span class="when">2022 – 2023</span>
+        <div>M.Res. in Economics, Finance and Management, Universitat Pompeu Fabra
+          <span class="where">Thesis: “Computing Nash equilibria in random games.” Advisor: Gábor Lugosi.</span></div>
+      </li>
+      <li>
+        <span class="when">2021 – 2023</span>
+        <div>M.Sc. in Data Driven Computing and Decision Making, University of Patras
+          <span class="where">Thesis: “Gap properties in random intersection graphs.” Advisor: Sotirios Nikoletseas. GPA 9.71/10, first in my year.</span></div>
+      </li>
+      <li>
+        <span class="when">2019 – 2021</span>
+        <div>M.Sc. in Mathematics, KTH Royal Institute of Technology and Stockholm University
+          <span class="where">Thesis: “Interventions for identifying context-specific causal structures.” Advisor: Liam Solus.</span></div>
+      </li>
+      <li>
+        <span class="when">2014 – 2018</span>
+        <div>B.Sc. in Mathematics, University of Patras
+          <span class="where">Pure mathematics track. GPA 8.71/10, top 3% of my year.</span></div>
+      </li>
+    </ol>
+
+    <h3>Awards and funding</h3>
+    <ol class="dated">
+      <li>
+        <span class="when">2024 – 2025</span>
+        <div>PhD Teaching Prize</div>
+      </li>
+      <li>
+        <span class="when">2023 – 2027</span>
+        <div>FPI Predoctoral Fellowship, Spanish Ministry of Science
+          <span class="where">PRE2022-102348</span></div>
+      </li>
+      <li>
+        <span class="when">2022 – 2023</span>
+        <div>“Panagiotis Triantafyllidis” Foundation Scholarship</div>
+      </li>
+    </ol>
+
+    <h3>Languages and software</h3>
+    <dl class="keyval">
+      <dt>Languages</dt>
+      <dd>Greek (native), English (fluent), Spanish (basic)</dd>
+      <dt>Software</dt>
+      <dd>LaTeX (proficient); Python, R, NetLogo (advanced)</dd>
+    </dl>
+
+    <p class="note" style="margin-top:2.75rem">Talks, research visits and workshops are listed under <a href="#talks">Talks</a>.</p>
+  </section>
+
+  <!-- ==============================================================
+       CONTACT
+       ============================================================== -->
+  <section id="contact" class="panel" tabindex="-1" aria-labelledby="contact-title">
+    <h2 class="panel-title" id="contact-title">Contact</h2>
+
+    <dl class="keyval">
+      <dt>Email</dt>
+      <dd>
+        <p><a href="mailto:georgios.karelas@upf.edu">georgios.karelas@upf.edu</a></p>
+        <p><a href="mailto:gnkarelas@gmail.com">gnkarelas@gmail.com</a> <span class="note">(personal)</span></p>
+      </dd>
+
+      <dt>Address</dt>
+      <dd>
+        <p>Department of Economics and Business<br>
+        Universitat Pompeu Fabra<br>
+        <!-- Office: building and room number -->
+        Ramon Trias Fargas 25–27<br>
+        08005 Barcelona, Spain</p>
+        <p class="sans" style="font-size:.9375rem;margin-top:.35rem"><a href="https://www.openstreetmap.org/search?query=Ramon%20Trias%20Fargas%2025%2C%2008005%20Barcelona">Show on map</a></p>
+      </dd>
+
+      <dt>Elsewhere</dt>
+      <dd>
+        <p><a href="https://scholar.google.com/citations?user=VtUY9cQAAAAJ&amp;hl=en">Google Scholar</a></p>
+        <p><a href="https://arxiv.org/search/?query=Karelas&amp;searchtype=author">arXiv</a></p>
+        <!-- Uncomment and fill in as needed:
+        <p><a href="https://orcid.org/0000-0000-0000-0000">ORCID</a></p>
+        <p><a href="https://github.com/USERNAME">GitHub</a></p>
+        <p><a href="https://www.linkedin.com/in/USERNAME">LinkedIn</a></p>
+        -->
+      </dd>
+    </dl>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Georgios Nikolaos Karelas, 2026. Last updated November 2026.</p>
+  </div>
+</footer>
+
+<script>
+/* ------------------------------------------------------------------
+   Tabs: each tab is a URL fragment (#research, #cv, ...) so it can be
+   linked to directly. Without JavaScript every section shows in order.
+   ------------------------------------------------------------------ */
+(function () {
+  const NAME = 'Georgios Nikolaos Karelas';
+  const panels = Array.from(document.querySelectorAll('.panel'));
+  const ids = panels.map(p => p.id);
+  const tabLinks = Array.from(document.querySelectorAll('.tabs a'));
+  const masthead = document.querySelector('.masthead');
+
+  function show(id, focus) {
+    if (!ids.includes(id)) id = ids[0];
+    panels.forEach(p => p.classList.toggle('is-active', p.id === id));
+    tabLinks.forEach(a => {
+      if (a.getAttribute('href') === '#' + id) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+    const label = tabLinks.find(a => a.getAttribute('href') === '#' + id).textContent;
+    document.title = id === ids[0] ? NAME : label + ' | ' + NAME;
+    if (focus) document.getElementById(id).focus({ preventScroll: true });
+  }
+
+  // Keep the tab bar in view without jumping past the name and photo.
+  function settle() {
+    const top = masthead.offsetHeight;
+    if (window.scrollY > top) window.scrollTo(0, top);
+  }
+
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const id = a.getAttribute('href').slice(1);
+    if (!ids.includes(id)) return;
+    e.preventDefault();
+    if (location.hash !== '#' + id) history.pushState(null, '', '#' + id);
+    show(id, true);
+    settle();
+  });
+  const fromHash = () => { show(location.hash.slice(1)); settle(); };
+  window.addEventListener('popstate', fromHash);
+  window.addEventListener('hashchange', fromHash);
+
+  show(location.hash.slice(1));
+})();
+
+/* Copy buttons for BibTeX */
+document.querySelectorAll('[data-copy]').forEach(btn => {
+  btn.addEventListener('click', async () => {
+    const text = document.getElementById(btn.dataset.copy).textContent.trim();
+    try {
+      await navigator.clipboard.writeText(text);
+      btn.textContent = 'Copied';
+    } catch (err) {
+      btn.textContent = 'Select the text to copy';
+    }
+    setTimeout(() => { btn.textContent = 'Copy'; }, 1800);
+  });
+});
+
+/* ------------------------------------------------------------------
+   The random game on the About tab.
+   Payoffs are i.i.d. uniform. From a random starting profile the
+   players take turns best-responding (row player first) until they
+   reach a pure Nash equilibrium or revisit a profile, i.e. enter a cycle.
+   ------------------------------------------------------------------ */
+(function () {
+  const svg = document.getElementById('game');
+  if (!svg) return;
+  const outcome = document.getElementById('game-outcome');
+  const NS = 'http://www.w3.org/2000/svg';
+  const n = 10, S = 26, M = 44, TICK = 8;
+  const X = j => M + j * S;
+  const Y = i => M + i * S;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  function el(tag, attrs) {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    svg.appendChild(e);
+    return e;
+  }
+  function argmax(a) {
+    let b = 0;
+    for (let k = 1; k < a.length; k++) if (a[k] > a[b]) b = k;
+    return b;
+  }
+
+  function sampleGame() {
+    const A = [], B = [];
+    for (let i = 0; i < n; i++) {
+      A.push(Array.from({ length: n }, Math.random));
+      B.push(Array.from({ length: n }, Math.random));
+    }
+    // br1[j]: row player's best response to column j; br2[i]: column player's best response to row i
+    const br1 = Array.from({ length: n }, (_, j) => argmax(A.map(row => row[j])));
+    const br2 = Array.from({ length: n }, (_, i) => argmax(B[i]));
+    return { br1, br2 };
+  }
+
+  function play(g, i, j) {
+    const pts = [[i, j]];
+    const seen = new Map([[i * n + j, 0]]);
+    for (;;) {
+      const rowHappy = g.br1[j] === i, colHappy = g.br2[i] === j;
+      if (rowHappy && colHappy) return { pts, cycleAt: -1 };
+      if (!rowHappy) i = g.br1[j]; else j = g.br2[i];
+      const key = i * n + j;
+      pts.push([i, j]);
+      if (seen.has(key)) return { pts, cycleAt: seen.get(key) };
+      seen.set(key, pts.length - 1);
+    }
+  }
+
+  const toPoints = arr => arr.map(([i, j]) => X(j) + ',' + Y(i)).join(' ');
+  const length = arr => arr.slice(1).reduce((s, [i, j], k) =>
+    s + Math.abs(X(j) - X(arr[k][1])) + Math.abs(Y(i) - Y(arr[k][0])), 0);
+  const plural = (k, one, many) => k + ' ' + (k === 1 ? one : many);
+
+  function draw(animate) {
+    const g = sampleGame();
+    const i0 = Math.floor(Math.random() * n), j0 = Math.floor(Math.random() * n);
+    const { pts, cycleAt } = play(g, i0, j0);
+    svg.replaceChildren();
+
+    const mid = M + (n - 1) * S / 2;
+    el('text', { x: mid, y: 20, class: 'g-axis', 'text-anchor': 'middle' }).textContent = 'column player';
+    el('text', { x: 0, y: 0, class: 'g-axis', 'text-anchor': 'middle',
+                 transform: 'translate(20 ' + mid + ') rotate(-90)' }).textContent = 'row player';
+
+    for (let i = 0; i < n; i++)
+      for (let j = 0; j < n; j++) el('circle', { cx: X(j), cy: Y(i), r: 1.5, class: 'g-dot' });
+    for (let j = 0; j < n; j++) {
+      const i = g.br1[j];
+      el('line', { x1: X(j), x2: X(j), y1: Y(i) - TICK, y2: Y(i) + TICK, class: 'g-tick' });
+    }
+    for (let i = 0; i < n; i++) {
+      const j = g.br2[i];
+      el('line', { x1: X(j) - TICK, x2: X(j) + TICK, y1: Y(i), y2: Y(i), class: 'g-tick' });
+    }
+    let pne = 0;
+    for (let j = 0; j < n; j++) {
+      const i = g.br1[j];
+      if (g.br2[i] === j) { pne++; el('circle', { cx: X(j), cy: Y(i), r: 10.5, class: 'g-pne' }); }
+    }
+
+    const k = cycleAt >= 0 ? cycleAt : pts.length - 1;   // moves before the cycle or equilibrium
+    const lead = pts.slice(0, k + 1);
+    const loop = cycleAt >= 0 ? pts.slice(k) : null;
+    const strokes = [];
+    if (lead.length > 1) strokes.push([el('polyline', { points: toPoints(lead), class: 'g-path' }), length(lead)]);
+    if (loop) strokes.push([el('polyline', { points: toPoints(loop), class: 'g-cycle' }), length(loop)]);
+    let endMark = null;
+    if (!loop) {
+      const [i, j] = pts[pts.length - 1];
+      endMark = el('circle', { cx: X(j), cy: Y(i), r: 5, class: 'g-end' });
+    }
+    el('circle', { cx: X(j0), cy: Y(i0), r: 4.5, class: 'g-start' });
+
+    // Caption
+    let eq;
+    if (pne === 0) eq = 'This game has no pure Nash equilibrium, which happens with probability close to 1/e.';
+    else if (pne === 1) eq = 'This game has one pure Nash equilibrium.';
+    else eq = 'This game has ' + pne + ' pure Nash equilibria.';
+    let path;
+    if (!loop && k === 0) path = 'The open circle is already an equilibrium, so nobody moves.';
+    else if (!loop) path = 'Starting from the open circle, the players reach an equilibrium after ' + plural(k, 'best response', 'best responses') + '.';
+    else path = 'Starting from the open circle, the players fall into a cycle of length ' + (pts.length - 1 - k) +
+                (k ? ' after ' + plural(k, 'best response', 'best responses') + '.' : '.');
+    outcome.textContent = eq + ' ' + path;
+
+    // One drawing motion: the path traces itself, then the cycle or the equilibrium appears.
+    if (!animate || reduceMotion.matches || !svg.animate) return;
+    let t = 150;
+    strokes.forEach(([line, len]) => {
+      const dur = Math.min(1400, Math.max(350, len * 2.2));
+      line.style.strokeDasharray = len;
+      line.animate([{ strokeDashoffset: len }, { strokeDashoffset: 0 }],
+                   { duration: dur, delay: t, easing: 'ease-in-out', fill: 'backwards' });
+      t += dur;
+    });
+    if (endMark) endMark.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, delay: t, fill: 'backwards' });
+  }
+
+  const aboutVisible = () => document.getElementById('about').classList.contains('is-active');
+  draw(aboutVisible());
+  document.getElementById('resample').addEventListener('click', () => draw(true));
+})();
+</script>
+</body>
+</html>
